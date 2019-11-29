@@ -6,10 +6,9 @@
 
 
 include("../Util/includes2.jl")
+using LinearAlgebra
 
-
-
-# Tableau des protéines
+#Tableau des protéines
 BMP4 = [0 833 832 830 581 831 835 833 699;
         681 697 697 697 581 697 691 680 0;
         831 844 843 819 580 0 830 819 897;
@@ -46,9 +45,62 @@ Sonic = [0 605 606 642 468 605 638 648 578;
          624 739 763 763 557 743 0 769 695;
          600 723 720 860 571 721 743 0 694]
 
-#
+function mintab(tab::Array{Int,2})
+    min = 100000
+    for i in tab
+        if i < min && i!=0
+            min=i
+        end
+    end
+    return min
+end
 
+function normetab(tab::Array{Int,2})
+    min = mintab(tab)
+    tab = map(x -> (x-min)/(maximum(tab)-min),tab)
+    return tab
+end
 
+function meanTab(tab1::Array{Float64,2},tab2::Array{Float64,2},tab3::Array{Float64,2},tab4::Array{Float64,2},tab5::Array{Float64,2},tab6::Array{Float64,2})
+    tab =Array{Float64,2}(undef,5,9)
+    for j in 1:9
+        for i in 1:5
+            tab[i,j]=1/6*(tab1[i,j]+tab2[i,j]+tab3[i,j]+tab4[i,j]+tab5[i,j]+tab6[i,j])
+            if tab[i,j] < 0
+                tab[i,j]=0
+            end
+        end
+    end
+    return transpose(tab)
+end
+
+function completeTab(tab::Array{Float64,2})
+    fintab = [tab[2,1] tab[3,1] tab[4,1] tab[5,1];
+             0 0 0 0;
+             0 0 0 0;
+             0 0 0 0;
+             0 0 0 0;
+             tab[2,3] tab[3,3] tab[4,3] tab[5,3];
+             tab[2,4] tab[3,4] tab[4,4] tab[5,4];
+             tab[2,5] tab[3,5] tab[4,5] tab[5,5];
+             tab[2,2] tab[3,2] tab[4,2] tab[5,2]]
+    fintab = hcat(tab,fintab)
+    dist = [fintab[1:];fintab[9:];fintab[6:];fintab[7:];fintab[8:];fintab[2:];fintab[3:];fintab[4:];fintab[5:];]
+    return dist
+end
+
+function quatrePts(tab::Array{Float64,2})
+    for a in 1:9
+        for b in a:9
+            for c in b:9
+                for d in c:9
+
+                end
+            end
+        end
+    end
+
+end
 
 SonicN=normetab(Sonic)
 MyogloN=normetab(Myoglo)
@@ -58,5 +110,5 @@ BMP4N=normetab(BMP4)
 FibroN=normetab(Fibro)
 
 score=meanTab(SonicN,MyogloN,InsulineN,DistalN,BMP4N,FibroN)
-println(score)
-println(completeTab(score))
+MatDist=completeTab(score)
+println(MatDist)
