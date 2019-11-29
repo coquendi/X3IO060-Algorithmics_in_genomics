@@ -73,3 +73,22 @@ function completeTab(tab::Array{Float64,2})
     dist = [fintab[1,:],fintab[9,:],fintab[6,:],fintab[7,:],fintab[8,:],fintab[2,:],fintab[3,:],fintab[4,:],fintab[5,:]]
     return dist
 end
+
+function quatrePts(tab::Array{Array{Float64,1},1})
+    for a in 1:9
+        for b in 1:9
+            for c in 1:9
+                for d in 1:9
+                    if a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d
+                        d1 =tab[a][b]+tab[c][d]
+                        d2 =tab[a][d]+tab[b][c]
+                        d3 =tab[a][c]+tab[b][d]
+                        if d1>d2
+                            println("false")
+                        end
+                    end
+                end
+            end
+        end
+    end
+end

@@ -58,14 +58,4 @@ MatDist=completeTab(score)
 
 println(MatDist)
 
-function quatrePts(tab::Array{Float64,2})
-    for a in 1:9
-        for b in a:9
-            for c in b:9
-                for d in c:9
-
-                end
-            end
-        end
-    end
-end
+quatrePts(MatDist)
