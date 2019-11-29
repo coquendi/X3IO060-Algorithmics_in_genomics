@@ -51,11 +51,20 @@ FibroN=normetab(Fibro)
 # Récupération du tableau moyen :
 score=meanTab(SonicN,MyogloN,InsulineN,DistalN,BMP4N,FibroN)
 
-println(typeof(score))
-
 # Complétion du tableau moyen pour avoir une matrice de distance bien formée :
 MatDist=completeTab(score)
 
-println(MatDist)
+# On symétrise la matrix puisque pour l'instant elle est en fonction de la taille de la sequence
+MatDistGood = magieDeLaSymetrie(MatDist)
 
-quatrePts(MatDist)
+for i in 1:length(MatDistGood)
+    txt = ""
+    for j in 1:length(MatDistGood)
+        txt *= string(round(MatDistGood[i][j], digits=3)) * " & "
+    end
+    println(SubString(txt, 1, length(txt)-2), "\\\\")
+    println("\\hline")
+end
+
+
+quatrePts(MatDistGood)

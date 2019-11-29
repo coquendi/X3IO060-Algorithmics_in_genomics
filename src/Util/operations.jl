@@ -61,10 +61,10 @@ end
 function completeTab(tab::Array{Float64,2})
     tab = transpose(tab)
     fintab = [tab[2,1] tab[3,1] tab[4,1] tab[5,1];
-             0 0 0 0;
-             0 0 0 0;
-             0 0 0 0;
-             0 0 0 0;
+             0 1 1 1;
+             1 0 1 1;
+             1 1 0 1;
+             1 1 1 0;
              tab[2,3] tab[3,3] tab[4,3] tab[5,3];
              tab[2,4] tab[3,4] tab[4,4] tab[5,4];
              tab[2,5] tab[3,5] tab[4,5] tab[5,5];
@@ -74,17 +74,36 @@ function completeTab(tab::Array{Float64,2})
     return dist
 end
 
+
+
+# Fonction qui rend symétrique la matrice de distance (enleve la prise en compte de la longueur d'une espece)
+# @param matrix : la matrice de distance
+# @return ::Array{Array{Float64, 1},1} : la matrice symétrisé
+function magieDeLaSymetrie(matrix::Array{Array{Float64,1},1})
+    for i in 1:(length(matrix)-1), j in (i+1):length(matrix)
+        tmp = (matrix[i][j] + matrix[j][i])/2
+        matrix[i][j] = tmp
+        matrix[j][i] = tmp
+    end
+    return matrix
+end
+
+
+
+
 function quatrePts(tab::Array{Array{Float64,1},1})
-    for a in 1:9
-        for b in 1:9
-            for c in 1:9
-                for d in 1:9
+    for a in 1:5
+        for b in 1:5
+            for c in 1:5
+                for d in 1:5
                     if a!=b && a!=c && a!=d && b!=c&& b!=d && c!=d
                         d1 =tab[a][b]+tab[c][d]
                         d2 =tab[a][d]+tab[b][c]
                         d3 =tab[a][c]+tab[b][d]
-                        if d1>d2
-                            println("false")
+                        if d1>d3
+                            println("false", a, ";", b, ";", c, ";", d)
+                        else
+                            #println("true")
                         end
                     end
                 end
