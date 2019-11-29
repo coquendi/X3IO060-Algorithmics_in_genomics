@@ -1,3 +1,10 @@
+# Fichier contenant le main de générations de tous les fichiers pour le site
+# @author Corentin Pelhâtre
+# @author Adrien Cassaigne
+# @date 10/11/2019
+# @version 1
+
+
 include("../Util/includes.jl")
 
 # Choix des proteins :
@@ -36,7 +43,7 @@ Noms = [
 pathInput = "../../Input/"
 pathOutput = "../../Output/"
 
-# Boucle qui géneère tous les fichiers nécessaires 
+# Boucle qui géneère tous les fichiers nécessaires
 for i in 1:length(choix)
     if choix[i][2]
         # Recuperation/lecture du fichier de la prot

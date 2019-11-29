@@ -1,3 +1,16 @@
+# Fichier contenant la fonction pour recuperer le contenu des deux fichier à generer
+# @author Corentin Pelhâtre
+# @author Adrien Cassaigne
+# @date 10/11/2019
+# @version 1
+
+
+
+# Fonction qui génére deux txt pour les mettre dans les fichier générés par la suite
+# @param tab : Le tableau bien formé
+# @param indice : L'indice du comparant
+# @return ::String : Le string du comparant
+# @return ::String : Le string des comparés 
 function deuxTxt(tab, indice)
     txt = ""
     for i in 1:indice-1

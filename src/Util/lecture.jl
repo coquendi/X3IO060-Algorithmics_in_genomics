@@ -1,3 +1,10 @@
+# Fichier contenant toutes les fonctions permettant de lire sur le disque 
+# @author Corentin Pelhâtre
+# @date 10/11/2019
+# @version 1
+
+
+
 # Fonction qui permet les fichiers de proteins
 # @param path l'adresse du fichier à etudier
 # @return le tableau de strings associé à chaque espece
@@ -20,6 +27,7 @@ function lectureProt(path::String)
 
     return prot, tab
 end
+
 
 
 # Fonction qui permet de verifier la presence d'un dossier

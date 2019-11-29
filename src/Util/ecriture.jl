@@ -1,9 +1,18 @@
+# Fichier contenant toutes les fonctions permettant d'ecrire sur le disque 
+# @author Corentin Pelhâtre
+# @date 10/11/2019
+# @version 1
+
+
+
 # Fonction qui permet d'ecrire le text passé en paramètre dans le fichier passé en paramètre
 # @param text le texte à ecrire
 # @param file le fichier (ou path/fichier) dans lequel ecrire
 function ecriture(text::String, file::String)
     run(pipeline(`echo -e $text`, stdout=file))
 end
+
+
 
 # Fonction qui creer le dossier s'il n'est pas existant et renvois le path une fois verifier
 # @param path le path vers le dossier dans lequel on veut ecrire
