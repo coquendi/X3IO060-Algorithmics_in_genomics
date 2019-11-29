@@ -1,4 +1,4 @@
-# Fichier contenant tous les includes pour le main 1
+# Fichier contenant tous les includes pour le main 2
 # @author Corentin Pelhâtre
 # @author Adrien Cassaigne
 # @date 10/11/2019
@@ -8,5 +8,4 @@
 
 include("./ecriture.jl")
 include("./lecture.jl")
-include("./stationDeLavage.jl")
-include("./generatorTxt.jl")
+include("./operations.jl")
