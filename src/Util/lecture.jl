@@ -8,7 +8,7 @@ function lectureProt(path::String)
     # Recuperation du nom exacte de la protein :
     prot = readline(f)
 
-    # 
+    #
     tab = []
     for line in eachline(f)
         if (string(SubString(line, 1, 1)) == string(">"))
@@ -23,8 +23,10 @@ end
 
 
 # Fonction qui permet de verifier la presence d'un dossier
-# @param path l'adresse du dossier
-# @param
+# @param path : l'adresse du dossier
+# @param dossier : Le nom du dossier
+# @param std : L'adresse de sortie des std out/err
+# @return ::Bool : True si le dossier existe dejà false sinon
 function verifDossier(path::String, dossier::String, std::String)
     # Ls du path :
     run(pipeline(`ls $path`, stdout=pipeline(`sort`, string(std, "stdout"))))
